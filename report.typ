@@ -3,7 +3,7 @@
   margin: (x: 2.5cm, y: 2.5cm),
 )
 #set text(
-  font: "New Computer Modern",
+  font: "Source Serif Pro",
   size: 12pt,
 )
 #set par(justify: true, leading: 0.65em)
@@ -72,7 +72,9 @@ A direct comparison reveals that Graviton consistently outperformed x86 by appro
 
 Interestingly, while Graviton was faster, the x86 instance maintained slightly higher levels of "free" memory (approximately 560MB vs 470MB) during inference sessions. This suggests that Graviton's speed advantage may stem from more aggressive memory utilization or superior instruction set efficiency for transformer-based math operations.
 
-In terms of energy consumption for both platforms, direct power measurements were not captured, but the throughput data allows for a high-fidelity estimation of energy efficiency. The Graviton architecture demonstrated a 45.6% higher throughput while maintaining a more stable performance floor during long-form generation. In the context of 2026 cloud sustainability metrics, this speed advantage directly correlates to a reduction in Energy-per-Token. By completing tasks faster and leveraging a more efficient 1:1 vCPU-to-physical-core mapping, the Graviton instance minimizes 'tail latency energy waste'. We estimate that for a standard 1,000-token request, the Graviton-based deployment would reduce total energy consumption by approximately 50% compared to the x86 baseline, making it the superior choice for more sustainable AI initiatives.
+In terms of energy consumption for both platforms, direct power measurements were not captured, but the throughput data allows for a high-fidelity estimation of energy efficiency. The Graviton architecture demonstrated a 45.6% higher throughput while maintaining a more stable performance floor during long-form generation. In the context of 2026 cloud sustainability metrics, this speed advantage directly correlates to a reduction in Energy-per-Token.
+
+By completing tasks faster and leveraging a more efficient 1:1 vCPU-to-physical-core mapping, where we have a 1:1 mapping between cores, the Graviton instance minimizes 'tail latency energy waste'. We estimate that for a standard 1,000-token request, the Graviton-based deployment would reduce total energy consumption by approximately 50% compared to the x86 baseline, making it the superior choice for more sustainable AI initiatives.
 
 #heading(level: 1)[Conclusion and Future Work]
 Our findings indicate that AWS Graviton is the optimal CPU-based platform for memory-constrained LLM inference, providing nearly 1.5x the performance of x86 at a similar or lower cost point [1]. This confirms that architecture selection is just as critical as model quantization when deploying AI to the edge. Future work will focus on measuring the energy-per-inference on these platforms to correlate throughput with power efficiency.
